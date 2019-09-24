@@ -10,6 +10,10 @@ const FilmCard = (props) => {
             <Text style={{ marginBottom: 10 }}>
                 {props.description}
             </Text>
+            <Text>Director: {props.director} </Text>
+            <Text>Producer: {props.producer} </Text>
+            <Text>Release Year: {props.year} </Text>
+            <Text>Score: {props.score} </Text>
         </Card>
     )
 }

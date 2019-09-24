@@ -49,7 +49,14 @@ export default class Screen1 extends Component {
                 {this.state.films.map((film, i) => {
                     return (
                         <View key={i}>
-                            <FilmCard title={film.title} description={film.description} />
+                            <FilmCard
+                                title={film.title}
+                                description={film.description}
+                                director={film.director}
+                                producer={film.producer}
+                                year={film.release_date}
+                                score={film.rt_score}
+                            />
                         </View>
                     )
                 })}
