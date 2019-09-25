@@ -25,9 +25,19 @@ export default class CustomSidebarMenu extends Component {
                 screenToNavigate: 'NavScreen2',
             },
             {
-                navOptionThumb: 'nature',
+                navOptionThumb: 'terrain',
                 navOptionName: 'Locations',
                 screenToNavigate: 'NavScreen3',
+            },
+            {
+                navOptionThumb: 'timeline',
+                navOptionName: 'Species',
+                screenToNavigate: 'NavScreen4',
+            },
+            {
+                navOptionThumb: 'traffic',
+                navOptionName: 'Vehicles',
+                screenToNavigate: 'NavScreen5',
             },
         ];
     }

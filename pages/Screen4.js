@@ -3,30 +3,30 @@ import React, { Component } from 'react';
 //import react in our code.
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import Spinner from "./components/Spinner"
-import People from "./components/People";
+import SpeciesCard from "./components/SpeciesCard";
 
-const ALL_PEOPLE_URL = "https://ghibliapi.herokuapp.com/people";
+const ALL_SPECIES_URL = "https://ghibliapi.herokuapp.com/species";
 
 
-export default class Screen2 extends Component {
+export default class Screen4 extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            people: null,
+            species: null,
         }
     }
 
     fetchData = () => {
-        fetch(ALL_PEOPLE_URL)
+        fetch(ALL_SPECIES_URL)
             .then(response => {
                 return response.json();
             })
             .then(data => {
                 this.setState({
-                    people: data
+                    species: data
                 }, () => {
-                    console.log(this.state.people)
+                    console.log(this.state.species)
                 })
             })
             .done();
@@ -46,15 +46,14 @@ export default class Screen2 extends Component {
     renderFilms = () => {
         return (
             <ScrollView styles={styles.MainContainer}>
-                {this.state.people.map((person, i) => {
+                {this.state.species.map((animal, i) => {
                     return (
                         <View key={i}>
-                            <People
-                                name={person.name}
-                                gender={person.gender}
-                                age={person.age}
-                                eye_color={person.eye_color}
-                                hair_color={person.hair_color} />
+                            <SpeciesCard
+                                name={animal.name}
+                                classification={animal.classification}
+                                eye_colors={animal.eye_colors}
+                                hair_colors={animal.hair_colors} />
                         </View>
                     )
                 })}
@@ -64,7 +63,7 @@ export default class Screen2 extends Component {
 
 
     render() {
-        if (!this.state.people) {
+        if (!this.state.species) {
             return this.renderLoadingView();
         }
         else {

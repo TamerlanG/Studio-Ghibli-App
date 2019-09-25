@@ -3,30 +3,30 @@ import React, { Component } from 'react';
 //import react in our code.
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import Spinner from "./components/Spinner"
-import People from "./components/People";
+import VehicleCard from "./components/VehicleCard";
 
-const ALL_PEOPLE_URL = "https://ghibliapi.herokuapp.com/people";
+const ALL_VEHICLES_URL = "https://ghibliapi.herokuapp.com/vehicles";
 
 
-export default class Screen2 extends Component {
+export default class Screen5 extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            people: null,
+            vehicles: null,
         }
     }
 
     fetchData = () => {
-        fetch(ALL_PEOPLE_URL)
+        fetch(ALL_VEHICLES_URL)
             .then(response => {
                 return response.json();
             })
             .then(data => {
                 this.setState({
-                    people: data
+                    vehicles: data
                 }, () => {
-                    console.log(this.state.people)
+                    console.log(this.state.vehicles)
                 })
             })
             .done();
@@ -46,15 +46,15 @@ export default class Screen2 extends Component {
     renderFilms = () => {
         return (
             <ScrollView styles={styles.MainContainer}>
-                {this.state.people.map((person, i) => {
+                {this.state.vehicles.map((vehicle, i) => {
                     return (
                         <View key={i}>
-                            <People
-                                name={person.name}
-                                gender={person.gender}
-                                age={person.age}
-                                eye_color={person.eye_color}
-                                hair_color={person.hair_color} />
+                            <VehicleCard
+                                name={vehicle.name}
+                                description={vehicle.description}
+                                vehicle_class={vehicle.vehicle_class}
+                                length={vehicle.length}
+                            />
                         </View>
                     )
                 })}
@@ -64,7 +64,7 @@ export default class Screen2 extends Component {
 
 
     render() {
-        if (!this.state.people) {
+        if (!this.state.vehicles) {
             return this.renderLoadingView();
         }
         else {

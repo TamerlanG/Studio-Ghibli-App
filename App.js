@@ -27,6 +27,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Screen1 from './pages/Screen1';
 import Screen2 from './pages/Screen2';
 import Screen3 from './pages/Screen3';
+import Screen4 from './pages/Screen4';
+import Screen5 from './pages/Screen5';
 
 //Import Custom Sidebar
 import CustomSidebarMenu from './CustomSideBarMenu';
@@ -104,6 +106,38 @@ const Screen3_StackNavigator = createStackNavigator({
   },
 });
 
+//Stack Navigator for the Fourth Option of Navigation Drawer
+const Screen4_StackNavigator = createStackNavigator({
+  //All the screen from the Fourth Option will be indexed here
+  Third: {
+    screen: Screen4,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Species',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#F49C9A',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+//Stack Navigator for the Fifth Option of Navigation Drawer
+const Screen5_StackNavigator = createStackNavigator({
+  //All the screen from the Fifth Option will be indexed here
+  Third: {
+    screen: Screen5,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Vehicles',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#F49C9A',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
 //Drawer Navigator Which will provide the structure of our App
 const DrawerNavigatorExample = createDrawerNavigator(
   {
@@ -124,6 +158,18 @@ const DrawerNavigatorExample = createDrawerNavigator(
       screen: Screen3_StackNavigator,
       navigationOptions: {
         drawerLabel: 'Locations',
+      },
+    },
+    NavScreen4: {
+      screen: Screen4_StackNavigator,
+      navigationOptions: {
+        drawerLabel: 'Species',
+      },
+    },
+    NavScreen5: {
+      screen: Screen5_StackNavigator,
+      navigationOptions: {
+        drawerLabel: 'Vehicles',
       },
     },
   },
